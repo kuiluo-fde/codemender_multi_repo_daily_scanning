@@ -343,14 +343,14 @@ Onboarding a new customer environment requires zero code changes—only a 6-vari
 
 ### 11.1 Architectural References
 * [CodeMender Public Documentation (`cm` v0.12+)](https://docs.cloud.google.com/gemini-enterprise-agent-platform/agents/codemender)
-* Internal CodeMender Deep Find Architecture & Benchmark Telemetry (`cl/976766121`, `go/codemender-rfc-20`)
+* [CodeMender Benchmark Telemetry Spreadsheet](https://docs.google.com/spreadsheets/d/12fNHoAU_rLDY7whWeBzMjNaFjHst9ldxg938Al6pK7w/edit?resourcekey=0-dmbHjLjY4XFcrdTLexG-ZA&gid=0#gid=0) & Internal Deep Find Architecture (`go/codemender-rfc-20`)
 
 ### 11.2 Cost Estimation Rules & Pricing Formulas
 
 All cost figures in **Section 8** are derived from three explicit estimation rules and pricing references:
 
 #### Rule 1: Empirical Token Consumption Model (From `cm stats` & Deep Find Benchmarks)
-Token counts per scan operation are derived from internal CodeMender Deep Find benchmark runs (`cl/976766121`) and `cm stats --json` session telemetry on representative enterprise repositories averaging **250 source files (~50,000 LOC)**:
+Token counts per scan operation are derived from internal [CodeMender Deep Find benchmark runs](https://docs.google.com/spreadsheets/d/12fNHoAU_rLDY7whWeBzMjNaFjHst9ldxg938Al6pK7w/edit?resourcekey=0-dmbHjLjY4XFcrdTLexG-ZA&gid=0#gid=0) and `cm stats --json` session telemetry on representative enterprise repositories averaging **250 source files (~50,000 LOC)**:
 * **Full Repository Deep Scan (`cm find . --deep`, 8 workers)**: After Tier-0 AST pruning (which filters out unit tests, mocks, and static schema files), CodeMender audits ~220–250 files in **2-file micro-batches** (~125 batches/repo). Each micro-batch consumes ~8.5k input tokens (system prompt + file source + tool calls) and ~1.1k output/thinking tokens:
   $$\text{Tokens}_{\text{deep}} = 125\text{ batches} \times 9.6\text{k tokens/batch} \approx \mathbf{1.2\text{M tokens/repo}} \quad (88\%\text{ input},\; 12\%\text{ output})$$
 * **Single-PR Diff Scan (`cm find . --diff`, 4 workers)**: Audits an average of 2–3 modified files plus 4–6 1-hop neighbor files (~3 micro-batches) = **~30k tokens per merged PR**. For an active repository averaging 2.5 merged PRs/day, daily delta replay consumes **~75k tokens per active repo-day**.
