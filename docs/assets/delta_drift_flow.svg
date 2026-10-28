@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="620" viewBox="0 0 1600 620">
+  <rect width="1600" height="620" fill="#FFFFFF"/>
+  
+  <defs>
+    <filter id="shadow2" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#202124" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrB" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#1A73E8"/>
+    </marker>
+    <marker id="arrG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#1E8E3E"/>
+    </marker>
+    <marker id="arrA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#E37400"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="12" width="1568" height="596" rx="18" fill="#FAFBFD" stroke="#DADCE0" stroke-width="1.5"/>
+  <rect x="36" y="26" width="490" height="26" rx="6" fill="#E8F0FE"/>
+  <text x="48" y="44" font-family="Google Sans, sans-serif" font-size="13" font-weight="bold" fill="#174EA6" letter-spacing="0.5">ADAPTIVE DELTA ENGINE &amp; DRIFT PROMOTION FLOWCHART</text>
+
+  <!-- Step 1: Clone & Verify Ancestry -->
+  <rect x="40" y="190" width="224" height="96" rx="14" fill="#E8F0FE" stroke="#1A73E8" stroke-width="2.5" filter="url(#shadow2)"/>
+  <text x="152" y="222" font-family="Google Sans, sans-serif" font-size="15" font-weight="bold" fill="#174EA6" text-anchor="middle">1. Shallow Clone &amp; Check</text>
+  <text x="152" y="244" font-family="Google Sans, sans-serif" font-size="12.5" fill="#202124" text-anchor="middle">git merge-base --is-ancestor</text>
+  <text x="152" y="264" font-family="Google Sans, sans-serif" font-size="12.5" fill="#202124" text-anchor="middle">last_scanned_sha HEAD</text>
+
+  <path d="M 264 238 L 316 238" stroke="#1A73E8" stroke-width="2.5" fill="none" marker-end="url(#arrB)"/>
+
+  <!-- Diamond 1: 4-Trigger Drift Check -->
+  <polygon points="444,150 568,238 444,326 320,238" fill="#FEF7E0" stroke="#F9AB00" stroke-width="2.5" filter="url(#shadow2)"/>
+  <text x="444" y="218" font-family="Google Sans, sans-serif" font-size="14" font-weight="bold" fill="#B06000" text-anchor="middle">Drift Trigger Met</text>
+  <text x="444" y="237" font-family="Google Sans, sans-serif" font-size="14" font-weight="bold" fill="#B06000" text-anchor="middle">or Force-Pushed?</text>
+  <text x="444" y="256" font-family="Google Sans, sans-serif" font-size="11.5" fill="#5F6368" text-anchor="middle">(&gt;=20% Churn / Sentinel /</text>
+  <text x="444" y="272" font-family="Google Sans, sans-serif" font-size="11.5" fill="#5F6368" text-anchor="middle">&gt;=15 Truncated / 30d TTL)</text>
+
+  <!-- Branch Down: Yes -> Full Deep Scan -->
+  <path d="M 444 326 L 444 488 L 780 488" stroke="#E37400" stroke-width="2.5" fill="none" marker-end="url(#arrA)"/>
+  <rect x="388" y="365" width="112" height="22" rx="11" fill="#FEF7E0" stroke="#E37400" stroke-width="1"/>
+  <text x="444" y="380" font-family="Google Sans, sans-serif" font-size="12" font-weight="bold" fill="#B06000" text-anchor="middle">Yes (Drifted)</text>
+
+  <!-- Branch Right: No -> Diamond 2 (Count PRs N <= 5?) -->
+  <path d="M 568 238 L 626 238" stroke="#1A73E8" stroke-width="2.5" fill="none" marker-end="url(#arrB)"/>
+  <rect x="573" y="212" width="46" height="20" rx="10" fill="#E8F0FE"/>
+  <text x="596" y="226" font-family="Google Sans, sans-serif" font-size="12" font-weight="bold" fill="#174EA6" text-anchor="middle">No</text>
+
+  <!-- Diamond 2: Count First-Parent Commits N <= 5? -->
+  <polygon points="742,156 854,238 742,320 630,238" fill="#E8F0FE" stroke="#1A73E8" stroke-width="2.5" filter="url(#shadow2)"/>
+  <text x="742" y="222" font-family="Google Sans, sans-serif" font-size="14" font-weight="bold" fill="#174EA6" text-anchor="middle">First-Parent PRs</text>
+  <text x="742" y="241" font-family="Google Sans, sans-serif" font-size="14" font-weight="bold" fill="#174EA6" text-anchor="middle">N &lt;= 5 Commits?</text>
+  <text x="742" y="260" font-family="Google Sans, sans-serif" font-size="11.5" fill="#3C4043" text-anchor="middle">(--first-parent count)</text>
+
+  <!-- Branch Up-Right: Mode A (1-5 PRs) -->
+  <path d="M 742 156 L 742 112 L 976 112" stroke="#1E8E3E" stroke-width="2.5" fill="none" marker-end="url(#arrG)"/>
+  <rect x="780" y="84" width="142" height="22" rx="11" fill="#E6F4EA" stroke="#1E8E3E" stroke-width="1"/>
+  <text x="851" y="99" font-family="Google Sans, sans-serif" font-size="12" font-weight="bold" fill="#137333" text-anchor="middle">1 to 5 PRs (Mode A)</text>
+
+  <!-- Mode A Box -->
+  <rect x="982" y="48" width="346" height="130" rx="14" fill="#E6F4EA" stroke="#1E8E3E" stroke-width="2.5" filter="url(#shadow2)"/>
+  <text x="1155" y="76" font-family="Google Sans, sans-serif" font-size="15.5" font-weight="bold" fill="#137333" text-anchor="middle">Mode A: Per-PR --diff Replay</text>
+  <text x="1155" y="100" font-family="Google Sans, sans-serif" font-size="12.5" fill="#202124" text-anchor="middle">• Skip commits overwritten at HEAD (git blame)</text>
+  <text x="1155" y="121" font-family="Google Sans, sans-serif" font-size="12.5" fill="#202124" text-anchor="middle">• Run cm find . --diff=&lt;parent&gt; per live PR</text>
+  <text x="1155" y="142" font-family="Google Sans, sans-serif" font-size="12.5" fill="#202124" text-anchor="middle">• Full 15-neighbor budget &amp; exact PR attribution</text>
+  <text x="1155" y="164" font-family="Google Sans, sans-serif" font-size="12" font-weight="bold" fill="#137333" text-anchor="middle">~30k tokens / PR  •  1–2 mins</text>
+
+  <!-- Branch Straight Right: Mode B (>5 PRs) -->
+  <path d="M 854 238 L 976 238" stroke="#1A73E8" stroke-width="2.5" fill="none" marker-end="url(#arrB)"/>
+  <rect x="858" y="208" width="112" height="22" rx="11" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1"/>
+  <text x="914" y="223" font-family="Google Sans, sans-serif" font-size="12" font-weight="bold" fill="#174EA6" text-anchor="middle">&gt; 5 PRs (Mode B)</text>
+
+  <!-- Mode B Box -->
+  <rect x="982" y="206" width="346" height="140" rx="14" fill="#E8F0FE" stroke="#1A73E8" stroke-width="2.5" filter="url(#shadow2)"/>
+  <text x="1155" y="234" font-family="Google Sans, sans-serif" font-size="15.5" font-weight="bold" fill="#174EA6" text-anchor="middle">Mode B: Context-Scoped Deep Scan</text>
+  <text x="1155" y="258" font-family="Google Sans, sans-serif" font-size="12.5" fill="#202124" text-anchor="middle">• Extract extant ACMR files as "- &lt;path&gt;" bullets</text>
+  <text x="1155" y="279" font-family="Google Sans, sans-serif" font-size="12.5" fill="#202124" text-anchor="middle">• Run cm find . --deep --context "&lt;files&gt;"</text>
+  <text x="1155" y="300" font-family="Google Sans, sans-serif" font-size="12.5" fill="#202124" text-anchor="middle">• Native scopeToProvidedFiles + 1-hop closure</text>
+  <text x="1155" y="324" font-family="Google Sans, sans-serif" font-size="12" font-weight="bold" fill="#174EA6" text-anchor="middle">(Promotes to Full Deep if &gt;=20% repo files)</text>
+
+  <!-- Full Deep Scan Box (Bottom) -->
+  <rect x="786" y="424" width="542" height="128" rx="14" fill="#FEF7E0" stroke="#E37400" stroke-width="2.5" filter="url(#shadow2)"/>
+  <text x="1057" y="454" font-family="Google Sans, sans-serif" font-size="15.5" font-weight="bold" fill="#B06000" text-anchor="middle">Full Repository Deep Re-Baseline (cm find . --deep)</text>
+  <text x="1057" y="480" font-family="Google Sans, sans-serif" font-size="12.5" fill="#202124" text-anchor="middle">• Audits all tracked source files (Stage 1 AST pruning + 8 workers)</text>
+  <text x="1057" y="502" font-family="Google Sans, sans-serif" font-size="12.5" fill="#202124" text-anchor="middle">• Resets last_deep_scan_sha = HEAD &amp; clears drift/truncation counters</text>
+  <text x="1057" y="526" font-family="Google Sans, sans-serif" font-size="12" font-weight="bold" fill="#B06000" text-anchor="middle">~1.2M tokens / repo  •  10–20 mins</text>
+
+  <!-- Convergence to Final Verify/Fix Node -->
+  <path d="M 1328 112 L 1356 112 L 1356 276 L 1380 276" stroke="#1E8E3E" stroke-width="2.5" fill="none" marker-end="url(#arrG)"/>
+  <path d="M 1328 276 L 1380 276" stroke="#1A73E8" stroke-width="2.5" fill="none" marker-end="url(#arrB)"/>
+  <path d="M 1328 488 L 1356 488 L 1356 308 L 1380 308" stroke="#E37400" stroke-width="2.5" fill="none" marker-end="url(#arrA)"/>
+
+  <rect x="1386" y="182" width="178" height="220" rx="14" fill="#F3E8FD" stroke="#8430CE" stroke-width="2.5" filter="url(#shadow2)"/>
+  <text x="1475" y="218" font-family="Google Sans, sans-serif" font-size="15" font-weight="bold" fill="#681DA8" text-anchor="middle">Checkout HEAD</text>
+  <text x="1475" y="238" font-family="Google Sans, sans-serif" font-size="15" font-weight="bold" fill="#681DA8" text-anchor="middle">&amp; Finalize</text>
+  <line x1="1404" y1="252" x2="1546" y2="252" stroke="#D7AEFB" stroke-width="1.5"/>
+  <text x="1475" y="278" font-family="Google Sans, sans-serif" font-size="12.5" fill="#202124" text-anchor="middle">1. Static cm verify</text>
+  <text x="1475" y="302" font-family="Google Sans, sans-serif" font-size="12.5" fill="#202124" text-anchor="middle">2. cm --sandbox=false</text>
+  <text x="1475" y="320" font-family="Google Sans, sans-serif" font-size="12.5" fill="#202124" text-anchor="middle">fix → Draft PR</text>
+  <text x="1475" y="346" font-family="Google Sans, sans-serif" font-size="12.5" fill="#202124" text-anchor="middle">3. Atomic GCS state</text>
+  <text x="1475" y="364" font-family="Google Sans, sans-serif" font-size="12.5" fill="#202124" text-anchor="middle">upload &amp; BQ stats</text>
+
+</svg>
