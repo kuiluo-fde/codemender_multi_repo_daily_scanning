@@ -30,19 +30,8 @@ Enterprise security teams adopting **CodeMender (`cm` v0.16.0+)** want to scan *
 
 ---
 
-## 2. CodeMender (`cm` v0.16.0+) Primitives & Goals
+## 2. Goals & Non-Goals
 
-CodeMender (`cm` v0.16.0+) runs a lightweight CLI worker that manages local SQLite state (`$CM_HOME/state.db`) and dispatches analysis sessions to the Gemini Enterprise Agent Platform (`gemini-3.8-flash` default; `gemini-3.8-flash-cyber` and `gemini-4-argon` for verification and high-assurance scans).
-
-| Scan Primitive | CLI Invocation (`v0.16.0+`) | Scope Audited | Workers | Avg Latency & Tokens | Fleet Monitoring Role |
-| :--- | :--- | :--- | :---: | :--- | :--- |
-| **Single-PR Diff** | `cm find . --diff=<ref>` | Modified hunks + 1-hop neighbors (cap 10–15) | 4 | **1–2 mins**<br/>~30k tokens / PR | **Mode A**: Per-PR replay ($1 \le N \le 5$ PRs) |
-| **Context-Scoped Deep** | `cm find . --deep -c "<files>"` | Extant changed files (`parseContextCandidates`) + 1-hop closure | 8 | **2–5 mins**<br/>~150k–180k tokens | **Mode B**: Coalesced delta ($N > 5$ PRs, $<20\%$ files) |
-| **Full Repo Deep** | `cm find . --deep` *(default)* | All tracked source files after Stage 1 Tree-Sitter AST pruning | 8 | **10–20 mins**<br/>~1.2M tokens | **Onboarding & Drift Re-Baseline** |
-
-> **Why Static Verify + Non-Sandboxed Fix Is Default**: `cm find --deep` already applies Stage 1 Tree-Sitter AST pruning and Stage 2 micro-batch verification (<2% false-positive rate). Because dynamic exploit verification (`cm verify`) requires a working per-repository build container (`build.command`), workers default to static verification (`cm verify --skip-exploit-verification --no-reset`) and non-sandboxed patch synthesis (`cm --sandbox=false fix <id> --yes` delivered as a **Draft PR**), with dynamic sandbox verification enabled opt-in for Tier-1 repositories.
-
-### 2.1 Goals & Non-Goals
 * **Goals**:
   * **G1 — Fleet Scale**: Monitor 100–500 repositories on a daily or weekly schedule, completing daily fleet sweeps in **< 45 minutes**.
   * **G2 — Full 1-Hop Coverage & Attribution**: Prevent neighbor truncation on multi-PR windows and attribute each finding to the introducing commit.

@@ -28,151 +28,151 @@
 
   <!-- Swimlane 1: Control Plane & Pre-Flight Filter -->
   <rect x="36" y="32" width="1528" height="270" rx="14" fill="#FFFFFF" stroke="#D2E3FC" stroke-width="1.5" stroke-dasharray="6,4"/>
-  <rect x="52" y="20" width="356" height="24" rx="6" fill="#E8F0FE"/>
-  <text x="64" y="36" font-family="Google Sans, sans-serif" font-size="13" font-weight="bold" fill="#174EA6" letter-spacing="0.5">STAGE 1 · CONTROL PLANE &amp; PRE-FLIGHT FILTER</text>
+  <rect x="52" y="19" width="390" height="26" rx="6" fill="#E8F0FE"/>
+  <text x="64" y="37" font-family="Google Sans, sans-serif" font-size="14.5" font-weight="bold" fill="#174EA6" letter-spacing="0.5">STAGE 1 · CONTROL PLANE &amp; PRE-FLIGHT FILTER</text>
 
   <!-- Node: Cloud Scheduler (Pill) -->
-  <rect x="58" y="88" width="210" height="76" rx="38" fill="#E8F0FE" stroke="#1A73E8" stroke-width="2.5" filter="url(#shadow)"/>
-  <text x="163" y="121" font-family="Google Sans, sans-serif" font-size="16" font-weight="bold" fill="#174EA6" text-anchor="middle">Cloud Scheduler</text>
-  <text x="163" y="143" font-family="Google Sans, sans-serif" font-size="13" fill="#3C4043" text-anchor="middle">Daily 01:00 UTC / Weekly</text>
+  <rect x="54" y="84" width="222" height="82" rx="41" fill="#E8F0FE" stroke="#1A73E8" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="165" y="120" font-family="Google Sans, sans-serif" font-size="18" font-weight="bold" fill="#174EA6" text-anchor="middle">Cloud Scheduler</text>
+  <text x="165" y="144" font-family="Google Sans, sans-serif" font-size="14.5" fill="#3C4043" text-anchor="middle">Daily 01:00 UTC / Weekly</text>
 
   <!-- Arrow: Scheduler -> Dispatcher -->
-  <path d="M 268 126 L 332 126" stroke="#1A73E8" stroke-width="2.5" fill="none" marker-end="url(#arrowBlue)"/>
+  <path d="M 276 125 L 330 125" stroke="#1A73E8" stroke-width="2.5" fill="none" marker-end="url(#arrowBlue)"/>
 
   <!-- Node: Fleet Dispatcher -->
-  <rect x="338" y="68" width="300" height="116" rx="14" fill="#E8F0FE" stroke="#1A73E8" stroke-width="2.5" filter="url(#shadow)"/>
-  <text x="488" y="98" font-family="Google Sans, sans-serif" font-size="17" font-weight="bold" fill="#174EA6" text-anchor="middle">Fleet Dispatcher Service</text>
-  <text x="488" y="122" font-family="Google Sans, sans-serif" font-size="13" fill="#202124" text-anchor="middle">1. Parallel git ls-remote HEAD check</text>
-  <text x="488" y="142" font-family="Google Sans, sans-serif" font-size="13" fill="#202124" text-anchor="middle">2. Acquire scan lease &amp; evaluate drift</text>
-  <text x="488" y="162" font-family="Google Sans, sans-serif" font-size="13" fill="#202124" text-anchor="middle">3. Mint downscoped GCS &amp; Git tokens</text>
+  <rect x="336" y="62" width="320" height="124" rx="14" fill="#E8F0FE" stroke="#1A73E8" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="496" y="94" font-family="Google Sans, sans-serif" font-size="18.5" font-weight="bold" fill="#174EA6" text-anchor="middle">Fleet Dispatcher Service</text>
+  <text x="496" y="119" font-family="Google Sans, sans-serif" font-size="14.5" fill="#202124" text-anchor="middle">1. Parallel git ls-remote HEAD check</text>
+  <text x="496" y="141" font-family="Google Sans, sans-serif" font-size="14.5" fill="#202124" text-anchor="middle">2. Acquire scan lease &amp; evaluate drift</text>
+  <text x="496" y="163" font-family="Google Sans, sans-serif" font-size="14.5" fill="#202124" text-anchor="middle">3. Mint downscoped GCS &amp; Git tokens</text>
 
   <!-- Node: Cloud SQL Cylinder (below Dispatcher) -->
-  <g transform="translate(388, 212)" filter="url(#shadow)">
-    <path d="M 0 14 C 0 5, 200 5, 200 14 L 200 62 C 200 71, 0 71, 0 62 Z" fill="#F3E8FD" stroke="#8430CE" stroke-width="2"/>
-    <ellipse cx="100" cy="14" rx="100" ry="9" fill="#E9D2FD" stroke="#8430CE" stroke-width="2"/>
-    <text x="100" y="40" font-family="Google Sans, sans-serif" font-size="14" font-weight="bold" fill="#681DA8" text-anchor="middle">Cloud SQL (repo_registry)</text>
-    <text x="100" y="57" font-family="Google Sans, sans-serif" font-size="12" fill="#3C4043" text-anchor="middle">SHAs • Drift Counters • Leases</text>
+  <g transform="translate(386, 212)" filter="url(#shadow)">
+    <path d="M 0 14 C 0 5, 220 5, 220 14 L 220 64 C 220 73, 0 73, 0 64 Z" fill="#F3E8FD" stroke="#8430CE" stroke-width="2"/>
+    <ellipse cx="110" cy="14" rx="110" ry="9" fill="#E9D2FD" stroke="#8430CE" stroke-width="2"/>
+    <text x="110" y="41" font-family="Google Sans, sans-serif" font-size="15.5" font-weight="bold" fill="#681DA8" text-anchor="middle">Cloud SQL (repo_registry)</text>
+    <text x="110" y="59" font-family="Google Sans, sans-serif" font-size="13.5" fill="#3C4043" text-anchor="middle">SHAs • Drift Counters • Leases</text>
   </g>
-  <path d="M 488 184 L 488 210" stroke="#8430CE" stroke-width="2" fill="none" marker-start="url(#arrowPurple)" marker-end="url(#arrowPurple)"/>
+  <path d="M 496 186 L 496 210" stroke="#8430CE" stroke-width="2" fill="none" marker-start="url(#arrowPurple)" marker-end="url(#arrowPurple)"/>
 
   <!-- Arrow: Dispatcher -> Diamond 1 -->
-  <path d="M 638 126 L 718 126" stroke="#1A73E8" stroke-width="2.5" fill="none" marker-end="url(#arrowBlue)"/>
+  <path d="M 656 125 L 716 125" stroke="#1A73E8" stroke-width="2.5" fill="none" marker-end="url(#arrowBlue)"/>
 
   <!-- Diamond 1: HEAD == last_scanned_sha? -->
-  <polygon points="835,62 948,126 835,190 722,126" fill="#FEF7E0" stroke="#F9AB00" stroke-width="2.5" filter="url(#shadow)"/>
-  <text x="835" y="121" font-family="Google Sans, sans-serif" font-size="14" font-weight="bold" fill="#B06000" text-anchor="middle">Remote HEAD ==</text>
-  <text x="835" y="140" font-family="Google Sans, sans-serif" font-size="13" font-weight="bold" fill="#B06000" text-anchor="middle">last_scanned_sha?</text>
+  <polygon points="838,56 956,125 838,194 720,125" fill="#FEF7E0" stroke="#F9AB00" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="838" y="120" font-family="Google Sans, sans-serif" font-size="15.5" font-weight="bold" fill="#B06000" text-anchor="middle">Remote HEAD ==</text>
+  <text x="838" y="140" font-family="Google Sans, sans-serif" font-size="14.5" font-weight="bold" fill="#B06000" text-anchor="middle">last_scanned_sha?</text>
 
   <!-- Branch: Unchanged (Yes) -> Skip Node -->
-  <path d="M 835 190 L 835 224" stroke="#5F6368" stroke-width="2.5" fill="none" marker-end="url(#arrowGray)"/>
-  <rect x="770" y="194" width="130" height="20" rx="10" fill="#F1F3F4"/>
-  <text x="835" y="208" font-family="Google Sans, sans-serif" font-size="12" font-weight="bold" fill="#3C4043" text-anchor="middle">Yes (70%–80%)</text>
+  <path d="M 838 194 L 838 225" stroke="#5F6368" stroke-width="2.5" fill="none" marker-end="url(#arrowGray)"/>
+  <rect x="768" y="196" width="140" height="21" rx="10" fill="#F1F3F4"/>
+  <text x="838" y="211" font-family="Google Sans, sans-serif" font-size="13" font-weight="bold" fill="#3C4043" text-anchor="middle">Yes (70%–80%)</text>
 
-  <rect x="720" y="226" width="230" height="54" rx="27" fill="#F1F3F4" stroke="#9AA0A6" stroke-width="2" filter="url(#shadow)"/>
-  <text x="835" y="250" font-family="Google Sans, sans-serif" font-size="14" font-weight="bold" fill="#3C4043" text-anchor="middle">Skip Immediately</text>
-  <text x="835" y="268" font-family="Google Sans, sans-serif" font-size="12" fill="#5F6368" text-anchor="middle">0 Containers  •  0 LLM Tokens</text>
+  <rect x="718" y="227" width="240" height="56" rx="28" fill="#F1F3F4" stroke="#9AA0A6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="838" y="251" font-family="Google Sans, sans-serif" font-size="15.5" font-weight="bold" fill="#3C4043" text-anchor="middle">Skip Immediately</text>
+  <text x="838" y="270" font-family="Google Sans, sans-serif" font-size="13.5" fill="#5F6368" text-anchor="middle">0 Containers  •  0 LLM Tokens</text>
 
   <!-- Branch: Changed (No) -> Diamond 2 (Drift Check) -->
-  <path d="M 948 126 L 1068 126" stroke="#1A73E8" stroke-width="2.5" fill="none" marker-end="url(#arrowBlue)"/>
-  <rect x="962" y="102" width="94" height="20" rx="10" fill="#E8F0FE"/>
-  <text x="1009" y="116" font-family="Google Sans, sans-serif" font-size="12" font-weight="bold" fill="#174EA6" text-anchor="middle">No (Changed)</text>
+  <path d="M 956 125 L 1066 125" stroke="#1A73E8" stroke-width="2.5" fill="none" marker-end="url(#arrowBlue)"/>
+  <rect x="962" y="99" width="98" height="22" rx="11" fill="#E8F0FE"/>
+  <text x="1011" y="115" font-family="Google Sans, sans-serif" font-size="13" font-weight="bold" fill="#174EA6" text-anchor="middle">No (Changed)</text>
 
   <!-- Diamond 2: Drift Trigger Met? -->
-  <polygon points="1205,54 1338,126 1205,198 1072,126" fill="#FEF7E0" stroke="#F9AB00" stroke-width="2.5" filter="url(#shadow)"/>
-  <text x="1205" y="112" font-family="Google Sans, sans-serif" font-size="14" font-weight="bold" fill="#B06000" text-anchor="middle">Any Drift Trigger</text>
-  <text x="1205" y="130" font-family="Google Sans, sans-serif" font-size="14" font-weight="bold" fill="#B06000" text-anchor="middle">or Unbaselined?</text>
-  <text x="1205" y="148" font-family="Google Sans, sans-serif" font-size="11" fill="#5F6368" text-anchor="middle">(Churn / Sentinel / Debt / TTL)</text>
+  <polygon points="1210,48 1350,125 1210,202 1070,125" fill="#FEF7E0" stroke="#F9AB00" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="1210" y="110" font-family="Google Sans, sans-serif" font-size="15.5" font-weight="bold" fill="#B06000" text-anchor="middle">Any Drift Trigger</text>
+  <text x="1210" y="130" font-family="Google Sans, sans-serif" font-size="15.5" font-weight="bold" fill="#B06000" text-anchor="middle">or Unbaselined?</text>
+  <text x="1210" y="150" font-family="Google Sans, sans-serif" font-size="12.5" fill="#5F6368" text-anchor="middle">(Churn / Sentinel / Debt / TTL)</text>
 
   <!-- Swimlane 2: Blocking Queue & Workflow Layer -->
   <rect x="36" y="324" width="1528" height="145" rx="14" fill="#FFFFFF" stroke="#CEEAD6" stroke-width="1.5" stroke-dasharray="6,4"/>
-  <rect x="52" y="312" width="445" height="24" rx="6" fill="#E6F4EA"/>
-  <text x="64" y="328" font-family="Google Sans, sans-serif" font-size="13" font-weight="bold" fill="#137333" letter-spacing="0.5">STAGE 2 · CONCURRENCY CONTROL (CLOUD TASKS + WORKFLOWS)</text>
+  <rect x="52" y="311" width="490" height="26" rx="6" fill="#E6F4EA"/>
+  <text x="64" y="329" font-family="Google Sans, sans-serif" font-size="14.5" font-weight="bold" fill="#137333" letter-spacing="0.5">STAGE 2 · CONCURRENCY CONTROL (CLOUD TASKS + WORKFLOWS)</text>
 
-  <!-- Routing Arrows from Diamond 2 to Delta Queue (Left, x=595 avoids Stage 2 badge!) and Deep Queue (Right) -->
-  <path d="M 1140 162 L 1140 288 Q 1140 298 1125 298 L 610 298 Q 595 298 595 312 L 595 350" stroke="#1E8E3E" stroke-width="2.5" fill="none" marker-end="url(#arrowGreen)"/>
-  <rect x="780" y="287" width="196" height="22" rx="11" fill="#E6F4EA" stroke="#1E8E3E" stroke-width="1"/>
-  <text x="878" y="302" font-family="Google Sans, sans-serif" font-size="12" font-weight="bold" fill="#137333" text-anchor="middle">No → Incremental Delta Scan</text>
+  <!-- Routing Arrows from Diamond 2 to Delta Queue (Left, x=605 avoids Stage 2 badge!) and Deep Queue (Right) -->
+  <path d="M 1140 164 L 1140 288 Q 1140 298 1125 298 L 620 298 Q 605 298 605 312 L 605 350" stroke="#1E8E3E" stroke-width="2.5" fill="none" marker-end="url(#arrowGreen)"/>
+  <rect x="775" y="286" width="210" height="24" rx="12" fill="#E6F4EA" stroke="#1E8E3E" stroke-width="1"/>
+  <text x="880" y="302" font-family="Google Sans, sans-serif" font-size="13" font-weight="bold" fill="#137333" text-anchor="middle">No → Incremental Delta Scan</text>
 
-  <path d="M 1270 162 L 1270 350" stroke="#E37400" stroke-width="2.5" fill="none" marker-end="url(#arrowAmber)"/>
-  <rect x="1175" y="245" width="190" height="22" rx="11" fill="#FEF7E0" stroke="#E37400" stroke-width="1"/>
-  <text x="1270" y="260" font-family="Google Sans, sans-serif" font-size="12" font-weight="bold" fill="#B06000" text-anchor="middle">Yes → Full Deep Re-Baseline</text>
+  <path d="M 1275 164 L 1275 350" stroke="#E37400" stroke-width="2.5" fill="none" marker-end="url(#arrowAmber)"/>
+  <rect x="1170" y="244" width="210" height="24" rx="12" fill="#FEF7E0" stroke="#E37400" stroke-width="1"/>
+  <text x="1275" y="260" font-family="Google Sans, sans-serif" font-size="13" font-weight="bold" fill="#B06000" text-anchor="middle">Yes → Full Deep Re-Baseline</text>
 
   <!-- Node: cm-delta-queue + Cloud Workflow -->
-  <rect x="195" y="354" width="520" height="94" rx="14" fill="#E6F4EA" stroke="#1E8E3E" stroke-width="2.5" filter="url(#shadow)"/>
-  <text x="455" y="382" font-family="Google Sans, sans-serif" font-size="16" font-weight="bold" fill="#137333" text-anchor="middle">cm-delta-queue  →  Cloud Workflow (cm-job-runner)</text>
-  <text x="455" y="405" font-family="Google Sans, sans-serif" font-size="13" fill="#202124" text-anchor="middle">• Throttles at max_concurrent_dispatches = 15 active jobs</text>
-  <text x="455" y="425" font-family="Google Sans, sans-serif" font-size="13" fill="#202124" text-anchor="middle">• Invokes Cloud Run Job synchronously &amp; blocks until container exits</text>
+  <rect x="165" y="354" width="560" height="96" rx="14" fill="#E6F4EA" stroke="#1E8E3E" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="445" y="383" font-family="Google Sans, sans-serif" font-size="17.5" font-weight="bold" fill="#137333" text-anchor="middle">cm-delta-queue  →  Cloud Workflow (cm-job-runner)</text>
+  <text x="445" y="407" font-family="Google Sans, sans-serif" font-size="14.5" fill="#202124" text-anchor="middle">• Throttles at max_concurrent_dispatches = 15 active jobs</text>
+  <text x="445" y="429" font-family="Google Sans, sans-serif" font-size="14.5" fill="#202124" text-anchor="middle">• Invokes Cloud Run Job synchronously &amp; blocks until container exits</text>
 
   <!-- Node: cm-deep-queue + Cloud Workflow -->
-  <rect x="945" y="354" width="520" height="94" rx="14" fill="#FEF7E0" stroke="#E37400" stroke-width="2.5" filter="url(#shadow)"/>
-  <text x="1205" y="382" font-family="Google Sans, sans-serif" font-size="16" font-weight="bold" fill="#B06000" text-anchor="middle">cm-deep-queue  →  Cloud Workflow (cm-job-runner)</text>
-  <text x="1205" y="405" font-family="Google Sans, sans-serif" font-size="13" fill="#202124" text-anchor="middle">• Throttles at max_concurrent_dispatches = 8 active jobs</text>
-  <text x="1205" y="425" font-family="Google Sans, sans-serif" font-size="13" fill="#202124" text-anchor="middle">• Caps Day-1 onboarding at 20 repos/day &amp; TTL refreshes at 10%/day</text>
+  <rect x="915" y="354" width="560" height="96" rx="14" fill="#FEF7E0" stroke="#E37400" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="1195" y="383" font-family="Google Sans, sans-serif" font-size="17.5" font-weight="bold" fill="#B06000" text-anchor="middle">cm-deep-queue  →  Cloud Workflow (cm-job-runner)</text>
+  <text x="1195" y="407" font-family="Google Sans, sans-serif" font-size="14.5" fill="#202124" text-anchor="middle">• Throttles at max_concurrent_dispatches = 8 active jobs</text>
+  <text x="1195" y="429" font-family="Google Sans, sans-serif" font-size="14.5" fill="#202124" text-anchor="middle">• Caps Day-1 onboarding at 20 repos/day &amp; TTL refreshes at 10%/day</text>
 
   <!-- Swimlane 3: Ephemeral Single-Writer Workers -->
   <rect x="36" y="492" width="1528" height="235" rx="14" fill="#FFFFFF" stroke="#DADCE0" stroke-width="1.5" stroke-dasharray="6,4"/>
-  <rect x="52" y="480" width="490" height="24" rx="6" fill="#E8F0FE"/>
-  <text x="64" y="496" font-family="Google Sans, sans-serif" font-size="13" font-weight="bold" fill="#174EA6" letter-spacing="0.5">STAGE 3 · SINGLE-WRITER EPHEMERAL WORKERS (CLOUD RUN JOBS — cm v0.16.0+)</text>
+  <rect x="52" y="479" width="535" height="26" rx="6" fill="#E8F0FE"/>
+  <text x="64" y="497" font-family="Google Sans, sans-serif" font-size="14.5" font-weight="bold" fill="#174EA6" letter-spacing="0.5">STAGE 3 · SINGLE-WRITER EPHEMERAL WORKERS (CLOUD RUN JOBS — cm v0.16.0+)</text>
 
-  <!-- Arrows from Queues to Workers (x=595 avoids Stage 3 badge!) -->
-  <path d="M 645 448 L 645 516" stroke="#1E8E3E" stroke-width="2.5" fill="none" marker-end="url(#arrowGreen)"/>
-  <path d="M 1205 448 L 1205 516" stroke="#E37400" stroke-width="2.5" fill="none" marker-end="url(#arrowAmber)"/>
+  <!-- Arrows from Queues to Workers (x=645 avoids Stage 3 badge!) -->
+  <path d="M 645 450 L 645 516" stroke="#1E8E3E" stroke-width="2.5" fill="none" marker-end="url(#arrowGreen)"/>
+  <path d="M 1195 450 L 1195 516" stroke="#E37400" stroke-width="2.5" fill="none" marker-end="url(#arrowAmber)"/>
 
   <!-- Node: Delta Worker Job -->
-  <rect x="115" y="520" width="680" height="190" rx="14" fill="#F8FAFD" stroke="#1A73E8" stroke-width="2.5" filter="url(#shadow)"/>
-  <rect x="115" y="520" width="680" height="36" rx="14" fill="#1A73E8"/>
-  <text x="455" y="544" font-family="Google Sans, sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Delta Scan Worker Job (cm-delta-worker)</text>
-  <text x="140" y="580" font-family="Google Sans, sans-serif" font-size="13.5" fill="#202124"><tspan font-weight="bold" fill="#174EA6">1. Pre-Flight &amp; Hydrate:</tspan> cm health --strict • Hydrate state.db • Sync dismissed PRs</text>
-  <text x="140" y="606" font-family="Google Sans, sans-serif" font-size="13.5" fill="#202124"><tspan font-weight="bold" fill="#137333">2A. Mode A (1–5 PRs):</tspan> Replay cm find . --diff=&lt;parent&gt; per live first-parent PR</text>
-  <text x="140" y="632" font-family="Google Sans, sans-serif" font-size="13.5" fill="#202124"><tspan font-weight="bold" fill="#137333">2B. Mode B (&gt;5 PRs):</tspan> Coalesced cm find . --deep --context "&lt;ACMR_files&gt;"</text>
-  <text x="140" y="658" font-family="Google Sans, sans-serif" font-size="13.5" fill="#202124"><tspan font-weight="bold" fill="#174EA6">3. Verify &amp; Remediate at HEAD:</tspan> Static cm verify --skip-exploit-verification + cm --sandbox=false fix</text>
-  <text x="140" y="684" font-family="Google Sans, sans-serif" font-size="13.5" fill="#202124"><tspan font-weight="bold" fill="#174EA6">4. Persist &amp; Export:</tspan> Upload cm_state.tar.zst (--if-generation-match) + cm stats / cm report</text>
+  <rect x="95" y="520" width="710" height="192" rx="14" fill="#F8FAFD" stroke="#1A73E8" stroke-width="2.5" filter="url(#shadow)"/>
+  <rect x="95" y="520" width="710" height="38" rx="14" fill="#1A73E8"/>
+  <text x="450" y="545" font-family="Google Sans, sans-serif" font-size="17.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Delta Scan Worker Job (cm-delta-worker)</text>
+  <text x="118" y="582" font-family="Google Sans, sans-serif" font-size="15" fill="#202124"><tspan font-weight="bold" fill="#174EA6">1. Pre-Flight &amp; Hydrate:</tspan> cm health --strict • Hydrate state.db • Sync dismissed PRs</text>
+  <text x="118" y="608" font-family="Google Sans, sans-serif" font-size="15" fill="#202124"><tspan font-weight="bold" fill="#137333">2A. Mode A (1–5 PRs):</tspan> Replay cm find . --diff=&lt;parent&gt; per live first-parent PR</text>
+  <text x="118" y="634" font-family="Google Sans, sans-serif" font-size="15" fill="#202124"><tspan font-weight="bold" fill="#137333">2B. Mode B (&gt;5 PRs):</tspan> Coalesced cm find . --deep --context "&lt;ACMR_files&gt;"</text>
+  <text x="118" y="660" font-family="Google Sans, sans-serif" font-size="15" fill="#202124"><tspan font-weight="bold" fill="#174EA6">3. Verify &amp; Fix at HEAD:</tspan> Static cm verify --skip-exploit-verification + cm --sandbox=false fix</text>
+  <text x="118" y="686" font-family="Google Sans, sans-serif" font-size="15" fill="#202124"><tspan font-weight="bold" fill="#174EA6">4. Persist &amp; Export:</tspan> Upload cm_state.tar.zst (--if-generation-match) + cm stats / cm report</text>
 
   <!-- Node: Deep Worker Job -->
-  <rect x="865" y="520" width="660" height="190" rx="14" fill="#FFFDF7" stroke="#E37400" stroke-width="2.5" filter="url(#shadow)"/>
-  <rect x="865" y="520" width="660" height="36" rx="14" fill="#E37400"/>
-  <text x="1195" y="544" font-family="Google Sans, sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Full Deep Scan Worker Job (cm-deep-worker)</text>
-  <text x="890" y="580" font-family="Google Sans, sans-serif" font-size="13.5" fill="#202124"><tspan font-weight="bold" fill="#B06000">1. Pre-Flight &amp; Hydrate:</tspan> cm health --strict • Hydrate state.db • Sync dismissed PRs</text>
-  <text x="890" y="610" font-family="Google Sans, sans-serif" font-size="13.5" fill="#202124"><tspan font-weight="bold" fill="#B06000">2. Full Repository Audit:</tspan> Run cm find . --deep --deep-workers=8 across all files</text>
-  <text x="890" y="640" font-family="Google Sans, sans-serif" font-size="13.5" fill="#202124"><tspan font-weight="bold" fill="#B06000">3. Verify &amp; Remediate at HEAD:</tspan> Static cm verify + cm --sandbox=false fix (Draft PR)</text>
-  <text x="890" y="670" font-family="Google Sans, sans-serif" font-size="13.5" fill="#202124"><tspan font-weight="bold" fill="#B06000">4. Reset Baseline Watermarks:</tspan> Set last_deep_scan_sha = HEAD &amp; reset drift counters</text>
+  <rect x="855" y="520" width="675" height="192" rx="14" fill="#FFFDF7" stroke="#E37400" stroke-width="2.5" filter="url(#shadow)"/>
+  <rect x="855" y="520" width="675" height="38" rx="14" fill="#E37400"/>
+  <text x="1192" y="545" font-family="Google Sans, sans-serif" font-size="17.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Full Deep Scan Worker Job (cm-deep-worker)</text>
+  <text x="878" y="582" font-family="Google Sans, sans-serif" font-size="15" fill="#202124"><tspan font-weight="bold" fill="#B06000">1. Pre-Flight &amp; Hydrate:</tspan> cm health --strict • Hydrate state.db • Sync dismissed PRs</text>
+  <text x="878" y="612" font-family="Google Sans, sans-serif" font-size="15" fill="#202124"><tspan font-weight="bold" fill="#B06000">2. Full Repository Audit:</tspan> Run cm find . --deep --deep-workers=8 across all files</text>
+  <text x="878" y="642" font-family="Google Sans, sans-serif" font-size="15" fill="#202124"><tspan font-weight="bold" fill="#B06000">3. Verify &amp; Fix at HEAD:</tspan> Static cm verify + cm --sandbox=false fix (Draft PR)</text>
+  <text x="878" y="672" font-family="Google Sans, sans-serif" font-size="15" fill="#202124"><tspan font-weight="bold" fill="#B06000">4. Reset Watermarks:</tspan> Set last_deep_scan_sha = HEAD &amp; reset drift counters</text>
 
   <!-- Swimlane 4: Persistent State, Telemetry & Developer Outputs -->
   <rect x="36" y="752" width="1528" height="196" rx="14" fill="#FFFFFF" stroke="#DADCE0" stroke-width="1.5" stroke-dasharray="6,4"/>
-  <rect x="52" y="740" width="445" height="24" rx="6" fill="#F3E8FD"/>
-  <text x="64" y="756" font-family="Google Sans, sans-serif" font-size="13" font-weight="bold" fill="#681DA8" letter-spacing="0.5">STAGE 4 · STATE PERSISTENCE, REMEDIATION &amp; REPORTING</text>
+  <rect x="52" y="739" width="480" height="26" rx="6" fill="#F3E8FD"/>
+  <text x="64" y="757" font-family="Google Sans, sans-serif" font-size="14.5" font-weight="bold" fill="#681DA8" letter-spacing="0.5">STAGE 4 · STATE PERSISTENCE, REMEDIATION &amp; REPORTING</text>
 
-  <!-- Arrows from Workers to Stage 4 Outputs (avoiding Stage 4 badge x=52..497) -->
-  <path d="M 535 710 L 535 848 L 507 848" stroke="#1A73E8" stroke-width="2.5" fill="none" marker-start="url(#arrowBlue)" marker-end="url(#arrowBlue)"/>
-  <path d="M 650 710 L 770 778" stroke="#1E8E3E" stroke-width="2.5" fill="none" marker-end="url(#arrowGreen)"/>
-  <path d="M 1030 710 L 850 778" stroke="#E37400" stroke-width="2.5" fill="none" marker-end="url(#arrowAmber)"/>
-  <path d="M 1290 710 L 1290 778" stroke="#8430CE" stroke-width="2.5" fill="none" marker-end="url(#arrowPurple)"/>
+  <!-- Arrows from Workers to Stage 4 Outputs (avoiding Stage 4 badge x=52..532) -->
+  <path d="M 555 712 L 555 848 L 515 848" stroke="#1A73E8" stroke-width="2.5" fill="none" marker-start="url(#arrowBlue)" marker-end="url(#arrowBlue)"/>
+  <path d="M 650 712 L 770 778" stroke="#1E8E3E" stroke-width="2.5" fill="none" marker-end="url(#arrowGreen)"/>
+  <path d="M 1030 712 L 850 778" stroke="#E37400" stroke-width="2.5" fill="none" marker-end="url(#arrowAmber)"/>
+  <path d="M 1290 712 L 1290 778" stroke="#8430CE" stroke-width="2.5" fill="none" marker-end="url(#arrowPurple)"/>
 
   <!-- Output 1: GCS State Archive (Cylinder) -->
-  <g transform="translate(115, 782)" filter="url(#shadow)">
-    <path d="M 0 16 C 0 4, 390 4, 390 16 L 390 128 C 390 140, 0 140, 0 128 Z" fill="#E8F0FE" stroke="#1A73E8" stroke-width="2"/>
-    <ellipse cx="195" cy="16" rx="195" ry="12" fill="#D2E3FC" stroke="#1A73E8" stroke-width="2"/>
-    <text x="195" y="48" font-family="Google Sans, sans-serif" font-size="15.5" font-weight="bold" fill="#174EA6" text-anchor="middle">Google Cloud Storage (Prefix-Isolated)</text>
-    <text x="195" y="72" font-family="Google Sans, sans-serif" font-size="13" fill="#202124" text-anchor="middle">gs://.../repos/&lt;repo_id&gt;/cm_state.tar.zst</text>
-    <text x="195" y="94" font-family="Google Sans, sans-serif" font-size="12.5" fill="#3C4043" text-anchor="middle">• Persists $CM_HOME/state.db &amp; .cm_project</text>
-    <text x="195" y="114" font-family="Google Sans, sans-serif" font-size="12.5" fill="#3C4043" text-anchor="middle">• Atomic lock via --if-generation-match</text>
+  <g transform="translate(95, 782)" filter="url(#shadow)">
+    <path d="M 0 16 C 0 4, 415 4, 415 16 L 415 130 C 415 142, 0 142, 0 130 Z" fill="#E8F0FE" stroke="#1A73E8" stroke-width="2"/>
+    <ellipse cx="207" cy="16" rx="207" ry="12" fill="#D2E3FC" stroke="#1A73E8" stroke-width="2"/>
+    <text x="207" y="48" font-family="Google Sans, sans-serif" font-size="17" font-weight="bold" fill="#174EA6" text-anchor="middle">Google Cloud Storage (Prefix-Isolated)</text>
+    <text x="207" y="73" font-family="Google Sans, sans-serif" font-size="14.5" fill="#202124" text-anchor="middle">gs://.../repos/&lt;repo_id&gt;/cm_state.tar.zst</text>
+    <text x="207" y="96" font-family="Google Sans, sans-serif" font-size="14" fill="#3C4043" text-anchor="middle">• Persists $CM_HOME/state.db &amp; .cm_project</text>
+    <text x="207" y="117" font-family="Google Sans, sans-serif" font-size="14" fill="#3C4043" text-anchor="middle">• Atomic lock via --if-generation-match</text>
   </g>
 
   <!-- Output 2: Enterprise Git Host (Draft PRs + SARIF) -->
-  <rect x="605" y="782" width="410" height="136" rx="14" fill="#E6F4EA" stroke="#1E8E3E" stroke-width="2" filter="url(#shadow)"/>
-  <text x="810" y="812" font-family="Google Sans, sans-serif" font-size="15.5" font-weight="bold" fill="#137333" text-anchor="middle">Enterprise Git Host (GitHub / GitLab)</text>
-  <text x="810" y="838" font-family="Google Sans, sans-serif" font-size="13" fill="#202124" text-anchor="middle">• Draft Fix PRs assigned to commit author</text>
-  <text x="810" y="860" font-family="Google Sans, sans-serif" font-size="13" fill="#202124" text-anchor="middle">• SARIF 2.1.0 inline code scanning alerts</text>
-  <text x="810" y="882" font-family="Google Sans, sans-serif" font-size="13" fill="#202124" text-anchor="middle">• Closed false-positive PRs sync back to state.db</text>
+  <rect x="590" y="782" width="440" height="138" rx="14" fill="#E6F4EA" stroke="#1E8E3E" stroke-width="2" filter="url(#shadow)"/>
+  <text x="810" y="812" font-family="Google Sans, sans-serif" font-size="17" font-weight="bold" fill="#137333" text-anchor="middle">Enterprise Git Host (GitHub / GitLab)</text>
+  <text x="810" y="838" font-family="Google Sans, sans-serif" font-size="14.5" fill="#202124" text-anchor="middle">• Draft Fix PRs assigned to commit author</text>
+  <text x="810" y="861" font-family="Google Sans, sans-serif" font-size="14.5" fill="#202124" text-anchor="middle">• SARIF 2.1.0 inline code scanning alerts</text>
+  <text x="810" y="884" font-family="Google Sans, sans-serif" font-size="14.5" fill="#202124" text-anchor="middle">• Closed false-positive PRs sync back to state.db</text>
 
   <!-- Output 3: BigQuery & Looker Studio -->
-  <g transform="translate(1110, 782)" filter="url(#shadow)">
-    <path d="M 0 16 C 0 4, 390 4, 390 16 L 390 128 C 390 140, 0 140, 0 128 Z" fill="#F3E8FD" stroke="#8430CE" stroke-width="2"/>
-    <ellipse cx="195" cy="16" rx="195" ry="12" fill="#E9D2FD" stroke="#8430CE" stroke-width="2"/>
-    <text x="195" y="48" font-family="Google Sans, sans-serif" font-size="15.5" font-weight="bold" fill="#681DA8" text-anchor="middle">BigQuery &amp; Looker Studio Dashboard</text>
-    <text x="195" y="72" font-family="Google Sans, sans-serif" font-size="13" fill="#202124" text-anchor="middle">• cm stats --json token &amp; cache telemetry</text>
-    <text x="195" y="94" font-family="Google Sans, sans-serif" font-size="13" fill="#202124" text-anchor="middle">• Open / Fixed / Reopened SLA tracking</text>
-    <text x="195" y="114" font-family="Google Sans, sans-serif" font-size="13" fill="#202124" text-anchor="middle">• Standalone HTML compliance archives in GCS</text>
+  <g transform="translate(1095, 782)" filter="url(#shadow)">
+    <path d="M 0 16 C 0 4, 420 4, 420 16 L 420 130 C 420 142, 0 142, 0 130 Z" fill="#F3E8FD" stroke="#8430CE" stroke-width="2"/>
+    <ellipse cx="210" cy="16" rx="210" ry="12" fill="#E9D2FD" stroke="#8430CE" stroke-width="2"/>
+    <text x="210" y="48" font-family="Google Sans, sans-serif" font-size="17" font-weight="bold" fill="#681DA8" text-anchor="middle">BigQuery &amp; Looker Studio Dashboard</text>
+    <text x="210" y="73" font-family="Google Sans, sans-serif" font-size="14.5" fill="#202124" text-anchor="middle">• cm stats --json token &amp; cache telemetry</text>
+    <text x="210" y="96" font-family="Google Sans, sans-serif" font-size="14.5" fill="#202124" text-anchor="middle">• Open / Fixed / Reopened SLA tracking</text>
+    <text x="210" y="117" font-family="Google Sans, sans-serif" font-size="14.5" fill="#202124" text-anchor="middle">• Standalone HTML compliance archives in GCS</text>
   </g>
 
 </svg>
