@@ -50,15 +50,6 @@ Enterprise security teams adopting **CodeMender (`cm` v0.16.0+)** want to scan *
 2. **Why Cloud Tasks + Cloud Workflows (`cm-job-runner`) Is Required**: Calling the Cloud Run Jobs API (`POST .../jobs/<job>:run`) directly from an HTTP Cloud Task returns `200 OK` in ~150ms as soon as the job is *created*, which would cause Cloud Tasks to dispatch all 100+ jobs simultaneously and exhaust Vertex AI quotas. Conversely, running scans inside a synchronous Cloud Run *Service* hits Cloud Tasks' 30-minute HTTP timeout on large `--deep` scans. Routing Cloud Tasks through a blocking **Cloud Workflow (`cm-job-runner`)** with `max_concurrent_dispatches = 15` (delta) and `8` (deep) polls job completion (up to 60+ minutes) and only returns `200 OK` to Cloud Tasks when the container exits.
 3. **Single-Writer Cloud Run Jobs**: Each worker runs a zero-cost credential check (`CM_TASK_AGENT_ID=<id> cm health --strict --json`), hydrates `$CM_HOME/state.db` from GCS, syncs dismissed PRs, executes `cm find`, runs static `cm verify` and `cm --sandbox=false fix` at `HEAD`, and uploads `cm_state.tar.zst` once with `--if-generation-match`.
 
-### 3.1 Alternatives Considered
-
-| Alternative | Pros | Why Rejected |
-| :--- | :--- | :--- |
-| **1. Per-Repo GitHub Actions / GitLab CI Cron** | Zero GCP orchestration to deploy. | Requires committing and maintaining workflow YAML files and GCP credentials across 100–500 repositories; no cross-repo concurrency throttling against shared Vertex AI quotas. |
-| **2. Single Sequential Cloud Run Job** | Simplest infra (1 Job + GCS). | Too slow and brittle at 100+ repos (~3 hours sequential runtime; one container OOM kills the entire fleet run). |
-| **3. Cloud Workflows `parallel` Only (No Cloud Tasks)** | Removes Cloud Tasks. | Cloud Workflows' `parallel` block caps concurrent branches (20) and lacks per-repository queue retry backoffs, dead-lettering, and task deduplication. |
-| **4. Direct Cloud SQL Backend for `cm`** | Eliminates GCS `state.db` hydration. | Incompatible with the `cm` v0.16.0+ binary, which reads and writes local SQLite (`$CM_HOME/state.db`) directly during `find`, `verify`, `fix`, and `report`. |
-
 ---
 
 ## 4. Daily & Weekly Delta Scans: Two-Mode Delta Engine
@@ -175,3 +166,14 @@ Because a Context-Scoped Deep Scan inspects each modified file plus 2–3 neighb
    * **Cloud Run Jobs (`2 vCPU, 4 GiB RAM`)**: ~$0.0035 / container-minute $\times$ 2,880 mins/mo = **~$10/mo**.
    * **Cloud SQL PostgreSQL (`db-g1-small`, 10 GB SSD)**: **~$30/mo**.
    * **Cloud Workflows (<5,000 free steps/mo), Cloud Tasks, GCS (<5 GB), Scheduler & BigQuery**: **~$5/mo** (Total baseline infra = **~$45/mo**).
+
+---
+
+## Appendix B: Alternatives Considered
+
+| Alternative | Pros | Why Rejected |
+| :--- | :--- | :--- |
+| **1. Per-Repo GitHub Actions / GitLab CI Cron** | Zero GCP orchestration to deploy. | Requires committing and maintaining workflow YAML files and GCP credentials across 100–500 repositories; no cross-repo concurrency throttling against shared Vertex AI quotas. |
+| **2. Single Sequential Cloud Run Job** | Simplest infra (1 Job + GCS). | Too slow and brittle at 100+ repos (~3 hours sequential runtime; one container OOM kills the entire fleet run). |
+| **3. Cloud Workflows `parallel` Only (No Cloud Tasks)** | Removes Cloud Tasks. | Cloud Workflows' `parallel` block caps concurrent branches (20) and lacks per-repository queue retry backoffs, dead-lettering, and task deduplication. |
+| **4. Direct Cloud SQL Backend for `cm`** | Eliminates GCS `state.db` hydration. | Incompatible with the `cm` v0.16.0+ binary, which reads and writes local SQLite (`$CM_HOME/state.db`) directly during `find`, `verify`, `fix`, and `report`. |
